@@ -91,13 +91,16 @@
     <p>Made with ❤️ by Mohd Hanzala</p>
   </footer>
 
-  <!-- Watson Assistant Embed -->
+  <!-- Watson Assistant Embed with Welcome Trigger -->
   <script>
     window.watsonAssistantChatOptions = {
       integrationID: "4be7f155-9f97-4951-ae89-725725e68dc4", // The ID of this integration.
       region: "au-syd", // The region your integration is hosted in.
       serviceInstanceID: "47e536c5-5d1d-4457-8a0f-3edb25826b94", // The ID of your service instance.
-      onLoad: async (instance) => { await instance.render(); }
+      onLoad: function(instance) {
+        instance.render();
+        instance.send({ input: { text: '' } }); // Trigger welcome message
+      }
     };
     setTimeout(function(){
       const t = document.createElement('script');
